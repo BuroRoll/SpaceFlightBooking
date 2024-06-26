@@ -4,11 +4,14 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from starlette import status
 
-from app.models import Flight
-from app.routers.v1.users import auth
-from app.schemas import FlightCreate
-from app import schemas, crud, models
-from app.database import get_db
+import crud
+import models
+import schemas
+from models import Flight
+from routers.v1.users import auth
+from schemas import FlightCreate
+
+from database import get_db
 
 router = APIRouter()
 
