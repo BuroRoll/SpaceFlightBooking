@@ -21,5 +21,5 @@ RUN poetry config virtualenvs.create false \
 
 # Creating folders, and files for a project:
 COPY src /code
-
+EXPOSE 8000
 CMD ["python", "app/main.py"]
