@@ -2,8 +2,8 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from routers.v1.users.auth import router as user_router
-from routers.v1.booking.booking import router as booking_router
+from app.routers.v1.users.auth import router as user_router
+from app.routers.v1.booking.booking import router as booking_router
 from database import engine, Base
 
 # space_booking
