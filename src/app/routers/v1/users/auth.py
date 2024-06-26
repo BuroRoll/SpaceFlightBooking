@@ -4,8 +4,10 @@ from sqlalchemy.orm import Session
 from datetime import datetime, timedelta
 from jose import JWTError, jwt
 from pydantic import BaseModel
-from app import schemas, crud
-from app.database import get_db
+
+import crud
+import schemas
+from database import get_db
 
 SECRET_KEY = "your_secret_key"
 ALGORITHM = "HS256"
