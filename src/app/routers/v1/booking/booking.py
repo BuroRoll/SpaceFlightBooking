@@ -7,8 +7,8 @@ from starlette import status
 from app.models import Flight
 from app.routers.v1.users import auth
 from app.schemas import FlightCreate
-from src.app import schemas, crud, models
-from src.app.database import get_db
+from app import schemas, crud, models
+from app.database import get_db
 
 router = APIRouter()
 
