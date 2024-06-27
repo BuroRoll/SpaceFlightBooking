@@ -14,26 +14,6 @@ from database import get_db
 
 router = APIRouter()
 
-# @router.post('/bookings/', response_model=schemas.Booking)
-# async def create_booking(
-#         booking: schemas.BookingCreate,
-#         db: Session = Depends(get_db),
-#         current_user: models.User = Depends(auth.get_current_user)
-# ):
-#     db_booking = crud.create_booking(db=db, booking=booking, user_id=current_user.id)
-#     if not db_booking:
-#         raise HTTPException(status_code=400, detail="Unable to create booking")
-#     return db_booking
-#
-# @router.get('/bookings/', response_model=List[schemas.Booking])
-# async def read_user_bookings(
-#         db: Session = Depends(get_db),
-#         current_user: models.User = Depends(auth.get_current_user)
-# ):
-#     bookings = crud.get_user_bookings(db=db, user_id=current_user.id)
-#     if bookings is None:
-#         raise HTTPException(status_code=404, detail="Bookings not found")
-#     return bookings
 
 @router.post('/flights/', status_code=status.HTTP_201_CREATED, response_model=schemas.Flight)
 async def create_flight(flight: FlightCreate, db: Session = Depends(get_db)):
@@ -64,6 +44,7 @@ async def create_booking(
     db_booking = crud.create_booking(
         db=db,
         booking=schemas.BookingCreate(
+            date=flight.date,
             destination=flight.destination,
             price=flight.price,
             flight_id=flight.id
