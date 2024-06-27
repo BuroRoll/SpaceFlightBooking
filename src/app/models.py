@@ -1,7 +1,5 @@
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 from sqlalchemy.orm import relationship
-from sqlalchemy.sql import func
-from sqlalchemy.sql.sqltypes import DateTime
 from database import Base
 
 
@@ -25,7 +23,7 @@ class Booking(Base):
     flight_id = Column(Integer, ForeignKey("flights.id"))
     destination = Column(String)
     price = Column(String)
-    date = Column(DateTime, default=func.now())
+    date = Column(String)
     user = relationship("User", back_populates="bookings")
     flight = relationship("Flight", back_populates="bookings")
 
