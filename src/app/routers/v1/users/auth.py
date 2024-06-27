@@ -128,6 +128,6 @@ async def register(user: schemas.UserCreate, db: Session = Depends(get_db)):
     return {"access_token": access_token, "token_type": "bearer"}
 
 
-@router.get("/users/me", response_model=schemas.User)
+@router.get("/users/me")
 async def read_users_me(current_user: schemas.User = Depends(get_current_user)):
     return current_user
