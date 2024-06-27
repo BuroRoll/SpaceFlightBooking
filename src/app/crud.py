@@ -29,6 +29,16 @@ def create_user(db: Session, user: schemas.UserCreate):
     return db_user
 
 
+def update_user_db(db: Session, user: schemas.UserBase, current_user: models.User):
+    current_user.name = user.name
+    current_user.surname = user.surname
+    current_user.email = user.email
+    db.add(current_user)
+    db.commit()
+    db.refresh(current_user)
+    return current_user
+
+
 def get_user_by_email(db: Session, email: str):
     return db.query(models.User).filter(models.User.email == email).first()
 
