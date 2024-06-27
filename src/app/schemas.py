@@ -1,5 +1,4 @@
 from pydantic import BaseModel, EmailStr
-from datetime import datetime
 from typing import List, Optional
 
 
@@ -25,6 +24,7 @@ class User(UserBase):
 class BookingBase(BaseModel):
     destination: str
     price: str
+    date: str
 
 
 class BookingCreate(BookingBase):
@@ -33,7 +33,7 @@ class BookingCreate(BookingBase):
 
 class Booking(BookingBase):
     id: int
-    date: datetime
+    date: str
     user_id: int
     flight_id: int
 
