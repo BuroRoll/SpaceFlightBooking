@@ -131,3 +131,10 @@ async def register(user: schemas.UserCreate, db: Session = Depends(get_db)):
 @router.get("/users/me", response_model=schemas.User)
 async def read_users_me(current_user: schemas.User = Depends(get_current_user)):
     return current_user
+
+@router.put("/users/me", response_model=schemas.UserBase)
+async def update_user(input_form: schemas.UserBase,
+                      current_user: schemas.User = Depends(get_current_user),
+                      db: Session = Depends(get_db)):
+    return crud.update_user_db(db=db, user=input_form, current_user=current_user)
+
