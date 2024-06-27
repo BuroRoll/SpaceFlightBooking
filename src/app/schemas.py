@@ -28,13 +28,14 @@ class BookingBase(BaseModel):
 
 
 class BookingCreate(BookingBase):
-    pass
+    flight_id: int
 
 
 class Booking(BookingBase):
     id: int
     date: datetime
     user_id: int
+    flight_id: int
 
     class Config:
         from_attributes = True

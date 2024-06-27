@@ -22,10 +22,12 @@ class Booking(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey("users.id"))
+    flight_id = Column(Integer, ForeignKey("flights.id"))
     destination = Column(String)
     price = Column(String)
     date = Column(DateTime, default=func.now())
     user = relationship("User", back_populates="bookings")
+    flight = relationship("Flight", back_populates="bookings")
 
 
 class Flight(Base):
@@ -37,3 +39,4 @@ class Flight(Base):
     date = Column(String)
     description = Column(String)
     planet_image = Column(String)
+    bookings = relationship("Booking", back_populates="flight")
